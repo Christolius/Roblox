@@ -21,7 +21,7 @@ v59 = v49.Main_Game.SpiderJumpscare
 
 i = 100
 sel = "Spider"
-local rp = LE:AddBox("Repeat", {fireonempty = true}, function(text)
+local rp = LE:AddBox("Repeat Amount", {fireonempty = true}, function(text)
 	if type(tonumber(text)) == "number" then
 		i = tonumber(text)
 	elseif text == nil or text == "" then
