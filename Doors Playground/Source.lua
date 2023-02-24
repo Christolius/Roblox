@@ -11,25 +11,51 @@ local Window = Library:AddWindow({
 })
 
 -- Create Tab
-local SPWNS = Window:AddTab("Summon", {default = false})
+local SPWNS = Window:AddTab("Summon", {default = true})
 
 -- Create Section
 local LE = SPWNS:AddSection("Local Entities", {default = false})
+local JS = SPWNS:AddSection("Jumpscares", {default = false})
+local ACH = SPWNS:AddSection("Achievement", {default = false})
 
 v49 = game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Initiator
 v59 = v49.Main_Game.SpiderJumpscare
 
-i = 100
+i = 1
+iach = 1
 sel = "Spider"
-local rp = LE:AddBox("Repeat", {fireonempty = true}, function(text)
+selj = "Rush"
+selach = "SurviveFigureLibrary"
+nms={}
+for i,v in pairs(require(game.ReplicatedStorage.Achievements)) do
+	nms[i] = i
+end
+wait(0.1)
+table.sort(nms, function(a,b)
+	return a:lower() < b:lower()
+end)
+local rp = LE:AddBox("Amount", {fireonempty = true}, function(text)
 	if type(tonumber(text)) == "number" then
 		i = tonumber(text)
 	elseif text == nil or text == "" then
 		i = 1	
 	end
 end)
-local Dropdown = LE:AddDropdown("Select", {"A-90","Glitch","Halt","Seek","Screech","Timothy","Void"}, {default = "Item1"}, function(selected)
+local rp = ACH:AddBox("Amount", {fireonempty = true}, function(text)
+	if type(tonumber(text)) == "number" then
+		iach = tonumber(text)
+	elseif text == nil or text == "" then
+		iach = 1	
+	end
+end)
+local Dropdown = LE:AddDropdown("Select", {"A-90","Glitch","Halt","Seek","Screech","Timothy","Void"}, {default = "A-90"}, function(selected)
 	sel = selected
+end)
+local Dropdown = JS:AddDropdown("Select", {"Ambush","Rush"}, {default = "Ambush"}, function(selected)
+	selj = selected
+end)
+local Dropdown = ACH:AddDropdown("Select", nms, {default = "SurviveFigureLibrary"}, function(selected)
+	selach = selected
 end)
 local strt = LE:AddButton("Summon", function()
 	local func
@@ -59,4 +85,26 @@ local strt = LE:AddButton("Summon", function()
 		end
 		end)
 	until idx == 0
+end)
+local strtj = JS:AddButton("Summon", function()
+		require(v49.Main_Game.Jumpscare)(selj)
+end)
+local strtach = ACH:AddButton("Get", function()
+	dx = iach
+	repeat
+	spawn(function ()
+	if selach ~= nil then
+		require(v49.Main_Game.AchievementUnlock)(nil, selach)
+	end
+		dx = dx - 1
+	end)
+	until dx == 0
+end)
+local strtach = ACH:AddButton("GetAll", function()
+	for i,v in pairs(require(game.ReplicatedStorage.Achievements)) do
+	spawn(function ()
+		
+	require(game:GetService("Players").LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.AchievementUnlock)(nil, i)
+	end)
+end
 end)
