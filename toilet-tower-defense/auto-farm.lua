@@ -2,7 +2,7 @@
 game.Players.LocalPlayer.CharacterAdded:Wait()
 while not game:IsLoaded() do task.wait() end
 wait(5)
-if not game.ReplicatedStorage:FindFirstChild'IsLobby' then return end
+if not game.ReplicatedStorage:FindFirstChild'IsLobby' then print('fail') return end
 local map = "ToiletHQ"
 if game.ReplicatedStorage.IsLobby.Value then
     print('Lobby Script Loaded')
