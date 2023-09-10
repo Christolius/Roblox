@@ -1,6 +1,7 @@
 local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
 local function fti(part:BasePart)
     firetouchinterest(part,hrp,0)
+    task.wait()
     firetouchinterest(part,hrp,1)
 end
 for i,v in pairs(workspace.CoinStuff:GetChildren()) do
