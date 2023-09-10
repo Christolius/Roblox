@@ -1,4 +1,4 @@
-local framework = require((game:GetService("ReplicatedStorage")):WaitForChild("MultiboxFramework"))
+local framework = require(game:GetService("ReplicatedStorage"):WaitForChild("MultiboxFramework"))
 
 local localplayer = game:GetService("Players").LocalPlayer
 local queueId = nil
