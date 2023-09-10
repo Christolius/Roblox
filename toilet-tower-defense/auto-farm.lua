@@ -1,6 +1,7 @@
 -- PUT THIS IS AUTOEXEC FOLDER
 game.Players.LocalPlayer.CharacterAdded:Wait()
 while not game:IsLoaded() do task.wait() end
+wait(5)
 if not game.ReplicatedStorage:FindFirstChild'IsLobby' then return end
 local map = "ToiletHQ"
 if game.ReplicatedStorage.IsLobby.Value then
