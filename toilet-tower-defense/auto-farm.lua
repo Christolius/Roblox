@@ -6,6 +6,7 @@ if game.ReplicatedStorage.IsLobby.Value then
     task.spawn(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Christolius/Roblox/main/toilet-tower-defense/auto-start.lua'),true)()
     end)
+    wait(.5)
     local lift = workspace.Lifts:GetChildren()[math.random(1,#workspace.Lifts:GetChildren())]
     while lift.Name ~= map do
         task.wait()
