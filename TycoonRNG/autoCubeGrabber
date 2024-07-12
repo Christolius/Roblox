@@ -1,0 +1,8 @@
+workspace.ChildAdded:Connect(function(v)
+    if not string.find(v.Name," Cube") or not v:FindFirstChild("Hitbox") then return end
+    local char = game.Players.LocalPlayer.Character
+    local orgpos = char.HumanoidRootPart.CFrame
+    char.HumanoidRootPart.CFrame = v.Hitbox.CFrame
+    task.wait(.05)
+    char.HumanoidRootPart.CFrame = orgpos
+end)
