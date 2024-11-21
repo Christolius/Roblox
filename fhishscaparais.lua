@@ -4,7 +4,7 @@ local player = game.Players.LocalPlayer
 local statFolder,Filtered
 local WeightVal,DelayVal = 100, 0.8
 local fishDone = {}
-local MutList = {"Aurora", "Mythical", "Midas", "Ghastly", "Sinister", "Mosaic", "Electric", "Glossy", "Silver", "Darkened", "Translucent", "Frozen", "Albino", "Negative"}
+local MutList = {"Lunar","Abyssal","Hexed", "Mythical", "Midas", "Ghastly", "Sinister", "Mosaic", "Electric", "Glossy", "Silver", "Darkened", "Translucent", "Frozen", "Albino", "Negative"}
 local win = SolarisLib:New({
   	Name = "Fisch Auto Appraise by Toto",
   	FolderToSave = "SolarisLibStuff"
